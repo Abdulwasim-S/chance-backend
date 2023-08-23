@@ -87,7 +87,7 @@ router.put('/forgetpassword',async(req,res)=>{
         res.status(200).json({message:"Check you mail for reset link success",token,email:user.email});
         
     } catch (error) {
-        res.status(500).json({message:"Unable to login...Try Again later",error});
+        res.status(500).json({message:"Try Again later",error});
     }
 });
 
