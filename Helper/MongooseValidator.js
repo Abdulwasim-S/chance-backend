@@ -56,5 +56,5 @@ const jobSchema = await mongoose.Schema({
   },
 });
 
-export const UserModel = mongoose.model("hirers", userSchema);
+export const UserModel = mongoose.model("users", userSchema);
 export const JobModel = mongoose.model("jobs", jobSchema);
