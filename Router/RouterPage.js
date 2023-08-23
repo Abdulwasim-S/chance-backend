@@ -24,7 +24,7 @@ router.post("/signup",async(req,res)=>{
             email:req.body.email,
             password:hashPin
         }).save();
-        res.status(200).json({message:"New Hirer Added",newUser})
+        res.status(200).json({message:"New User Added",newUser})
     }
     catch(error){
         console.log("Error",error)
