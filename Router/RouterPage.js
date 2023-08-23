@@ -22,13 +22,14 @@ router.post("/signup",async(req,res)=>{
         const newUser = await UserModel({
             name:req.body.name,
             email:req.body.email,
+            qualification:req.body.qualification,
             password:hashPin
         }).save();
         res.status(200).json({message:"New User Added",newUser})
     }
     catch(error){
         console.log("Error",error)
-        res.status(500).json({error_message : "Internal server error",message : "Try again later"})
+        res.status(500).json({error_message : "Internal server error",message : "Try again later",error})
     }
     
 })
