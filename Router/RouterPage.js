@@ -57,7 +57,7 @@ router.post('/login',async(req,res)=>{
 //Forget password
 router.put('/forgetpassword',async(req,res)=>{
     try {
-        const user = await hirerModel.findOne({email:req.body.email});
+        const user = await UserModel.findOne({email:req.body.email});
         //Checking... user present or not
         if(!user){
             return res.status(403).json({message : "No user found"});
