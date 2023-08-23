@@ -77,7 +77,7 @@ router.put('/forgetpassword',async(req,res)=>{
             from: 'abdulwasimsguvi@gmail.com',
             to: req.body.email,
             subject: "password reset", 
-            html: "<p>Click the below link to reset password</p><br/><b>https://localhost:5001/resetpassword-hirer</b>", 
+            html: "<p>Click the below link to reset password</p><br/><b>https://chance-backend.vercel.app/resetpassword</b>", 
 
         }
         //Sending password reset link mail...
@@ -149,6 +149,32 @@ router.delete('/jobs',isAuth,async(req,res)=>{
     try {
         const jobs = await JobModel.deleteOne({_id:req.body.id});
         res.status(200).json({message:"Job deleted"});
+        
+    } catch (error) {
+        res.status(500).json({message:"Try Again later",error});
+    }
+})
+//Send Mail
+router.post('/send-mail',isAuth,async(req,res)=>{
+    try {
+        //Mail transporter
+        let transporter = nodemailer.createTransport({
+            service:"gmail",
+            auth:{
+                user:process.env.USER,
+                pass:process.env.PASS
+            }
+        })
+        //Message for mail...
+        let message = {
+            from: 'abdulwasimsguvi@gmail.com',
+            to: req.body.email,
+            subject: "Job Application - reg", 
+            html: `<p>Job application from Chance</p><p>Email : ${req.body.email} , Message: ${req.body.message}</p><p>Thank you for using our page!</p>`, 
+
+        }
+        //Sending password reset link mail...
+        let sendMail = await transporter.sendMail(message);
         
     } catch (error) {
         res.status(500).json({message:"Try Again later",error});
