@@ -78,7 +78,7 @@ router.put('/forgetpassword',async(req,res)=>{
             from: 'abdulwasimsguvi@gmail.com',
             to: req.body.email,
             subject: "password reset", 
-            html: "<p>Click the below link to reset password</p><br/><b>https://chance-backend.vercel.app/resetpassword</b>", 
+            html: "<p>Click the below link to reset password</p><br/><b>https://chance-murex.vercel.app/resetpassword</b>", 
 
         }
         //Sending password reset link mail...
