@@ -131,7 +131,7 @@ router.post('/post-job',isAuth,async(req,res)=>{
 })
 
 //Job list route
-router.get('/jobs',isAuth,async(req,res)=>{
+router.post('/jobs',isAuth,async(req,res)=>{
     try {
         const jobs = await JobModel.find();
         //Checking... user present or not
