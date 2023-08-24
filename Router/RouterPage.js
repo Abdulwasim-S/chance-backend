@@ -119,9 +119,9 @@ router.post('/post-job',isAuth,async(req,res)=>{
             email:req.body.email,
             company:req.body.company,
             role :req.body.role,
-            skillsRequired : req.body.skill,
+            skillsRequired : req.body.skillsRequired,
             experience : req.body.experience,
-            qualification :req.body.qualificstion
+            qualification :req.body.qualification
         }).save();
         res.status(200).json({message:"Job posted"});
         
