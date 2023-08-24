@@ -158,6 +158,7 @@ router.delete('/jobs',isAuth,async(req,res)=>{
 //Send Mail
 router.post('/send-mail',isAuth,async(req,res)=>{
     try {
+        const toMail=req.headers['chance-application-mail']
         //Mail transporter
         let transporter = nodemailer.createTransport({
             service:"gmail",
@@ -169,13 +170,14 @@ router.post('/send-mail',isAuth,async(req,res)=>{
         //Message for mail...
         let message = {
             from: 'abdulwasimsguvi@gmail.com',
-            to: req.body.email,
+            to: req.headers['chance-application-mail'],
             subject: "Job Application - reg", 
             html: `<p>Job application from Chance</p><p>Email : ${req.body.email} , Message: ${req.body.message}</p><p>Thank you for using our page!</p>`, 
 
         }
         //Sending password reset link mail...
         let sendMail = await transporter.sendMail(message);
+        res.status(200).json({message:"Applied"});
         
     } catch (error) {
         res.status(500).json({message:"Try Again later",error});
