@@ -126,7 +126,7 @@ router.post('/post-job',isAuth,async(req,res)=>{
         res.status(200).json({message:"Job posted"});
         
     } catch (error) {
-        res.status(500).json({message:"Unable to find user...Try Again later",error});
+        res.status(500).json({message:"Try Again later",error});
     }
 })
 
